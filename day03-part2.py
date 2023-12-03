@@ -8,7 +8,7 @@ def main():
     claims = set()
 
     for line in lines:
-        num, col, row, colLen, rowLen = [int(a) for a in re.split('#| |,|:|x|@', line) if a]
+        num, col, row, colLen, rowLen = [int(a) for a in re.split('[^0-9]', line) if a]
         claims.add(num)
         for curRow in range(row, row+rowLen):
             for curCol in range(col, col+colLen):
