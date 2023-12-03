@@ -8,17 +8,10 @@ def main():
 
     for line in lines:
         counter = Counter(line)
-        curTwo = 0
-        curThree = 0
-
-        for key, val in counter.items():
-            if val == 2:
-                curTwo = 1
-            elif val == 3:
-                curThree = 1
-
-        twoCounts += curTwo
-        threeCounts += curThree
+        if 2 in counter.values():
+            twoCounts += 1
+        if 3 in counter.values():
+            threeCounts += 1
 
     print(twoCounts * threeCounts)
 

@@ -5,22 +5,11 @@ def main():
 
     for line in lines:
         for curSeen in seen:
-            if len(line) != len(curSeen):
-                continue
+            diffIndices = [i for i, (c1, c2) in enumerate(zip(line, curSeen)) if c1 != c2]
 
-            diff = 0
-            indexDiff = -1
-
-            for i in range(len(line)):
-                if curSeen[i] != line[i]:
-                    diff += 1
-                    indexDiff = i
-                if diff > 1:
-                    break
-
-            if diff == 1:
-                print(line[0:indexDiff] + line[indexDiff + 1:len(line)])
-                quit()
+            if len(diffIndices) == 1:
+                i = diffIndices[0]
+                print(line[:i] + line[i + 1:])
 
         seen.add(line)
 
